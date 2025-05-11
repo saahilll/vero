@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'channels',
 
     # My apps
     'a_home',
@@ -93,6 +94,22 @@ TEMPLATES = [
 
 ASGI_APPLICATION = 'a_core.asgi.application'
 
+"""
+CHANNEL_LAYERS ={
+    'default': {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    }
+}
+"""
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [('redis://default:QqxOZdlFZOkfMEYFEWMFYnwGZqanNEUk@mainline.proxy.rlwy.net:11958')],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
