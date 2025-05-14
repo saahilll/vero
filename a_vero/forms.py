@@ -9,3 +9,28 @@ class ChatMessageCreateForm(ModelForm):
         widgets = {
             'body' : forms.TextInput(attrs= {'placeholder': 'Add Message...', 'class': 'p-4 text-black', 'maxlength' : '300', 'autofocus': True}),
         }
+
+class NewGroupForm(ModelForm):
+    class Meta:
+        model = ChatGroup
+        fields = ['groupchat_name']
+        widgets = {
+            'groupchat_name': forms.TextInput(attrs={
+                'placeholder': 'Add name...',
+                'class': 'p-4 text-black',
+                'max_length': '300',
+                'autofocus':True,
+            }),
+        }
+
+class ChatRoomEditForm(ModelForm):
+    class Meta:
+        model = ChatGroup
+        fields = ['groupchat_name']
+        widgets = {
+            'groupchat_name': forms.TextInput(attrs={
+                'class': 'p-4 text-black font-bold mb-4',
+                'max_length': '300',
+                'autofocus': True,
+            }),
+        }
